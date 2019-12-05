@@ -13,6 +13,7 @@ namespace Store.MapperProfiles
             CreateMap<CategoryRequest, Category>();
 
             CreateMap<PaginationRequest, PaginationFilter>();
+            CreateMap<NewBaskedItemRequest, Basket>();
         }
     }
 }

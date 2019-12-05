@@ -20,17 +20,17 @@ namespace Store.Services
             this.user = user;
         }
 
-        public async Task<ICollection<Product>> GetAllAsync()
+        public async Task<ICollection<Models.Product>> GetAllAsync()
         {
             return await dbContext.Products.Include(x => x.Category).ToListAsync();
         }
 
-        public async Task<Product> GetAsync(Guid id)
+        public async Task<Models.Product> GetAsync(Guid id)
         {
             return await dbContext.Products.Include(x => x.Category).SingleOrDefaultAsync(x => x.Id == id);
         }
 
-        public async Task<Product> AddAsync(Product product)
+        public async Task<Models.Product> AddAsync(Models.Product product)
         {
             product.OwnerUserId = user.Id;
 
@@ -42,7 +42,7 @@ namespace Store.Services
             return productToReturn;
         }
 
-        public async Task<Product> UpdateAsync(Product product)
+        public async Task<Models.Product> UpdateAsync(Models.Product product)
         {
             dbContext.Products.Update(product);
 

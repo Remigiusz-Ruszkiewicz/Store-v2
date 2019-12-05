@@ -25,5 +25,11 @@
             public const string GetAll = Base + "categories";
             public const string Add = Base + "categories";
         }
+        public static class Basket
+        {
+            public const string Add = Base + "basket";
+            public const string Get = Base + "basket";
+            public const string Delete = Base + "basket/{id}";
+        }
     }
 }

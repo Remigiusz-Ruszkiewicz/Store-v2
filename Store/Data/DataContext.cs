@@ -12,6 +12,7 @@ namespace Store.Data
         public DbSet<Product> Products { get; set; }
 
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Basket> Basket { get; set; }
 
         public DataContext(DbContextOptions<DataContext> options)
             : base(options)
