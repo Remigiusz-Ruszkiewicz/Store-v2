@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Store.Contracts.V1;
 using Store.Contracts.V1.Requests;
 using Store.Contracts.V1.Responses;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace Store.Controllers.V1
 {
+    
     [ApiController]
     public class UsersController : ControllerBase
     {

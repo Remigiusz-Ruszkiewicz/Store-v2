@@ -25,44 +25,44 @@ namespace Store.IntegrationTests
             Assert.Equal(HttpStatusCode.Unauthorized, response.StatusCode);
         }
 
-        [Fact]
-        public async Task GetAll_AsAuthorizedUser_ReturnsCategories()
-        {
-            var fixture = new Fixture();
-            await DbContext.Categories.AddRangeAsync(fixture.CreateMany<Category>(2));
+        //[Fact]
+        //public async Task GetAll_AsAuthorizedUser_ReturnsCategories()
+        //{
+        //    var fixture = new Fixture();
+        //    await DbContext.Categories.AddRangeAsync(fixture.CreateMany<Category>(2));
 
-            await DbContext.SaveChangesAsync();
+        //    await DbContext.SaveChangesAsync();
 
-            await LoginAsAdmin();
+        //    await LoginAsAdmin();
 
-            var response = await TestClient.GetAsync(ApiRoutes.Categories.GetAll);
-            var categories = await response.Content.ReadAsAsync<PagedResponse<CategoryResponse>>();
+        //    var response = await TestClient.GetAsync(ApiRoutes.Categories.GetAll);
+        //    var categories = await response.Content.ReadAsAsync<PagedResponse<CategoryResponse>>();
 
-            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
-            Assert.Equal(2, categories.Data.Count());
+        //    Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        //    Assert.Equal(2, categories.Data.Count());
 
-            response.StatusCode.Should().Be(HttpStatusCode.OK);
-            categories.Data.Count().Should().Be(2);
-        }
+        //    response.StatusCode.Should().Be(HttpStatusCode.OK);
+        //    categories.Data.Count().Should().Be(2);
+        //}
 
-        [Fact]
-        public async Task Add_AsAdmin_ReturnsCreatedCategory()
-        {
-            await LoginAsAdmin();
+        //[Fact]
+        //public async Task Add_AsAdmin_ReturnsCreatedCategory()
+        //{
+        //    await LoginAsAdmin();
 
-            var newCategory = new CategoryRequest
-            {
-                Name = "Test"
-            };
+        //    var newCategory = new CategoryRequest
+        //    {
+        //        Name = "Test"
+        //    };
 
-            var response = await TestClient.PostAsJsonAsync(ApiRoutes.Categories.Add, newCategory);
-            var createdCategory = await response.Content.ReadAsAsync<CategoryResponse>();
+        //    var response = await TestClient.PostAsJsonAsync(ApiRoutes.Categories.Add, newCategory);
+        //    var createdCategory = await response.Content.ReadAsAsync<CategoryResponse>();
 
-            var dbCategory = await DbContext.Categories.FindAsync(createdCategory.Id);
+        //    var dbCategory = await DbContext.Categories.FindAsync(createdCategory.Id);
 
-            Assert.Equal(HttpStatusCode.OK, response.StatusCode);
-            Assert.Equal(newCategory.Name, createdCategory.Name);
-            Assert.Equal(newCategory.Name, dbCategory.Name);
-        }
+        //    Assert.Equal(HttpStatusCode.OK, response.StatusCode);
+        //    Assert.Equal(newCategory.Name, createdCategory.Name);
+        //    Assert.Equal(newCategory.Name, dbCategory.Name);
+        //}
     }
 }
