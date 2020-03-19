@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_gallery"
+            android:icon="@drawable/ic_menu_account"
+            android:title="Konto" />
+        <item
+            android:id="@+id/nav_slideshow"
+            android:icon="@drawable/ic_menu_basket"
+            android:title="Koszyk" />
+        <item
+            android:id="@+id/nav_camera"
+            android:icon="@drawable/ic_menu_payment"
+            android:title="Płatność" />
+        <item
+            android:id="@+id/nav_manage"
+            android:icon="@drawable/ic_menu_aboutcompany"
+            android:title="Informacje o firmie" />
+        
+    </group>
+
+    <item android:title="Kontakt">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_aboutus"
+                android:title="O nas" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_menu_openhours"
+                android:title="Godziny otwarcia" />
+        </menu>
+    </item>
+
+</menu>
